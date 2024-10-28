@@ -6,7 +6,7 @@ namespace Domain.Cart;
 public class Cart
 {
     public UserId UserId { get; }
-    public List<CartItem.CartItem> Items { get; private set; }
+    public List<CartItem.CartItem> Items { get; set; }
 
     public Cart(UserId userId)
     {
