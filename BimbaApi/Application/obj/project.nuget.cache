@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qSGhSCgAAE4=",
+  "dgSpecHash": "2Z4bvFRJhQ8=",
   "success": true,
-  "projectFilePath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oleks\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.7\\microsoft.netcore.app.ref.8.0.7.nupkg.sha512",
     "C:\\Users\\oleks\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.7\\microsoft.windowsdesktop.app.ref.8.0.7.nupkg.sha512",

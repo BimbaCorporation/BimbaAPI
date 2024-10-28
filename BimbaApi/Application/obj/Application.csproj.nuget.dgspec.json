@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\Domain.csproj": {}
+    "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\Domain.csproj": {
+    "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\oleks\\.nuget\\packages\\",
-        "outputPath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Domain\\obj\\",
+        "outputPath": "C:\\RestAPI\\BimbaAPI\\BimbaApi\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\oleks\\AppData\\Roaming\\NuGet\\NuGet.Config"
