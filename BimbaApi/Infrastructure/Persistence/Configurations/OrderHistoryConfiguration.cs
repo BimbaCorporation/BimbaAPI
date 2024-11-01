@@ -18,6 +18,11 @@ namespace Infrastructure.Persistence.Configurations
                 .HasMany<Orders>() 
                 .WithOne()
                 .HasForeignKey(oh => oh.UserId);
+            
+            builder.HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

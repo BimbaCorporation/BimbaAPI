@@ -1,29 +1,34 @@
 using Domain.MenuItem;
 using Domain.Order;
 
-namespace Domain.OrderItem;
-
-public class OrderItem
+namespace Domain.OrderItem
 {
-    public OrderItemId Id { get; }
-    public MenuItemId MenuItemId { get; }
-    public OrderId OrderId { get; } 
-
-    public int Quantity { get; private set; }
-    public decimal Price { get; private set; } 
-
-    public OrderItem(OrderItemId id, MenuItemId menuItemId, int quantity, decimal price)
+    public class OrderItem
     {
-        Id = id;
-        MenuItemId = menuItemId;
-        Quantity = quantity;
-        Price = price;
-    }
+        public OrderItemId Id { get; private set; }
+        public MenuItemId MenuItemId { get; private set; } // This will be mapped by EF Core
+        public OrderId OrderId { get; private set; }
+        
+        public int Quantity { get; private set; }
+        public decimal Price { get; private set; }
+        
+        public decimal TotalPrice => Quantity * Price;
 
-    public decimal TotalPrice => Quantity * Price;
+        // Public constructor for business logic
+        public OrderItem(OrderItemId id, MenuItemId menuItemId, int quantity, decimal price)
+        {
+            Id = id;
+            MenuItemId = menuItemId;
+            Quantity = quantity;
+            Price = price;
+        }
 
-    public void UpdateQuantity(int quantity)
-    {
-        Quantity = quantity;
+        // Private parameterless constructor for EF Core
+        private OrderItem() { }
+
+        public void UpdateQuantity(int quantity)
+        {
+            Quantity = quantity;
+        }
     }
 }

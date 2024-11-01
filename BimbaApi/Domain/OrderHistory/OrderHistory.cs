@@ -7,6 +7,7 @@ namespace Domain.OrderHistory
     {
         public OrderHistoryId Id { get; }
         public UserId UserId { get; } 
+        public User.User? User { get; } 
         public List<OrderId> Orders { get; private set; }
 
         public OrderHistory(OrderHistoryId id, UserId userId)

@@ -20,17 +20,12 @@ namespace Infrastructure.Persistence.Repositories
         }
 
         // Read: Отримати Cart за UserId
-        public async Task<Cart> GetByUserIdAsync(UserId userId)
-        {
-            return await context.Carts
-                .Include(c => c.Items) // Якщо потрібно включити Items
-                .FirstOrDefaultAsync(c => c.UserId == userId);
-        }
+      
 
         // Update: Оновити існуючий Cart
         public async Task<Cart> UpdateAsync(Cart cart)
         {
-            var existingCart = await context.Carts.FindAsync(cart.UserId);
+            var existingCart = await context.Carts.FindAsync(cart.CartId);
             if (existingCart == null)
             {
                 throw new Exception("Cart not found");

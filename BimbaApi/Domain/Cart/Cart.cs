@@ -6,12 +6,12 @@ namespace Domain.Cart;
 
 public class Cart
 {
-    public UserId UserId { get; }
+    public CartId CartId { get; }
     public List<CartItems> Items { get; set; }
 
-    public Cart(UserId userId)
+    public Cart(CartId cartId)
     {
-        UserId = userId;
+        CartId = cartId;
         Items = new List<CartItems>();
     }
 
