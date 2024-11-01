@@ -1,7 +1,7 @@
-using Domain.CartItem;
-using Microsoft.EntityFrameworkCore;
 using Application.Common.Interfaces.Queries;
 using Application.Common.Interfaces.Repositories;
+using Domain.CartItem;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
 

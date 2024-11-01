@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Application.Common.Interfaces.Queries;
 using Application.Common.Interfaces.Repositories;
 using Domain.Cart;
 using Domain.User;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories 
 {

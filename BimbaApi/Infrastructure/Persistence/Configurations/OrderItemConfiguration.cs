@@ -1,5 +1,5 @@
-using Domain.OrderItem;
 using Domain.Order;
+using Domain.OrderItem;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

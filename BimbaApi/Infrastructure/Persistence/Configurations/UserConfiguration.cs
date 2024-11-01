@@ -1,6 +1,6 @@
+using Domain.Addres;
 using Domain.User;
 using Domain.UserInfo;
-using Domain.Addres;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

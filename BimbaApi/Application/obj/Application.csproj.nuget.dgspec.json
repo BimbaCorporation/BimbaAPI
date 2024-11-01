@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\RestApi2024\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {}
+    "C:\\Andriy\\react\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\RestApi2024\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {
+    "C:\\Andriy\\react\\BimbaAPI\\BimbaApi\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RestApi2024\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Andriy\\react\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\RestApi2024\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\maksp\\.nuget\\packages\\",
-        "outputPath": "C:\\RestApi2024\\BimbaAPI\\BimbaApi\\Application\\obj\\",
+        "projectPath": "C:\\Andriy\\react\\BimbaAPI\\BimbaApi\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Andriy\\.nuget\\packages\\",
+        "outputPath": "C:\\Andriy\\react\\BimbaAPI\\BimbaApi\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\maksp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Andriy\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Andriy\\.dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
