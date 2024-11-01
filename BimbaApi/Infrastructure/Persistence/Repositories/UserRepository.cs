@@ -3,38 +3,33 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
 
 namespace Infrastructure.Persistence.Repositories;
 
-public class UserRepository
+public class UserRepository(ApplicationDbContext context) : IUserRepository, IUserQueries
 {
-    private readonly ApplicationDbContext _context;
-
-    public UserRepository(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
     // CREATE
     public async Task AddUserAsync(User user)
     {
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
+        await context.Users.AddAsync(user);
+        await context.SaveChangesAsync();
     }
 
     // READ
     public async Task<User?> GetUserByIdAsync(UserId id)
     {
-        return await _context.Users
-            .Include(u => u.UserInfo)
+        return await context.Users
+            .Include(u => u.UsersInfo)
             .Include(u => u.Orders)
             .FirstOrDefaultAsync(u => u.Id == id);
     }
 
     public async Task<IEnumerable<User>> GetAllUsersAsync()
     {
-        return await _context.Users
-            .Include(u => u.UserInfo)
+        return await context.Users
+            .Include(u => u.UsersInfo)
             .Include(u => u.Orders)
             .ToListAsync();
     }
@@ -42,8 +37,8 @@ public class UserRepository
     // UPDATE
     public async Task UpdateUserAsync(User user)
     {
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
+        context.Users.Update(user);
+        await context.SaveChangesAsync();
     }
 
     // DELETE
@@ -52,8 +47,8 @@ public class UserRepository
         var user = await GetUserByIdAsync(id);
         if (user != null)
         {
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            context.Users.Remove(user);
+            await context.SaveChangesAsync();
         }
     }
 }

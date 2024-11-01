@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Persistence.Configurations;
 
-public class MenuItemConfiguration : IEntityTypeConfiguration<MenuItem>
+public class MenuItemConfiguration : IEntityTypeConfiguration<MenuItems>
 {
-    public void Configure(EntityTypeBuilder<MenuItem> builder)
+    public void Configure(EntityTypeBuilder<MenuItems> builder)
     {
         builder.HasKey(mi => mi.Id);
         builder.Property(mi => mi.Id).HasConversion(mi => mi.Value, mi => new MenuItemId(mi));

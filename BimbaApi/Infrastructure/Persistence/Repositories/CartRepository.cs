@@ -1,33 +1,28 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
 using Domain.Cart;
 using Domain.User;
-using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Repositories
+namespace Infrastructure.Persistence.Repositories 
 {
-    public class CartRepository
+    public class CartRepository (ApplicationDbContext context) : ICartRepository, ICartQueries
     {
-        private readonly ApplicationDbContext _context;
-
-        public CartRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         // Create: Додати новий Cart
         public async Task<Cart> CreateAsync(Cart cart)
         {
-            await _context.Carts.AddAsync(cart);
-            await _context.SaveChangesAsync();
+            await context.Carts.AddAsync(cart);
+            await context.SaveChangesAsync();
             return cart;
         }
 
         // Read: Отримати Cart за UserId
         public async Task<Cart> GetByUserIdAsync(UserId userId)
         {
-            return await _context.Carts
+            return await context.Carts
                 .Include(c => c.Items) // Якщо потрібно включити Items
                 .FirstOrDefaultAsync(c => c.UserId == userId);
         }
@@ -35,25 +30,25 @@ namespace Infrastructure.Persistence.Repositories
         // Update: Оновити існуючий Cart
         public async Task<Cart> UpdateAsync(Cart cart)
         {
-            var existingCart = await _context.Carts.FindAsync(cart.UserId);
+            var existingCart = await context.Carts.FindAsync(cart.UserId);
             if (existingCart == null)
             {
                 throw new Exception("Cart not found");
             }
 
             existingCart.Items = cart.Items; // Оновлюємо Items
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return existingCart;
         }
 
         // Delete: Видалити Cart за UserId
         public async Task DeleteAsync(UserId userId)
         {
-            var cart = await _context.Carts.FindAsync(userId);
+            var cart = await context.Carts.FindAsync(userId);
             if (cart != null)
             {
-                _context.Carts.Remove(cart);
-                await _context.SaveChangesAsync();
+                context.Carts.Remove(cart);
+                await context.SaveChangesAsync();
             }
         }
     }

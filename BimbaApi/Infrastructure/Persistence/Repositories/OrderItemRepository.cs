@@ -1,41 +1,36 @@
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
 using Domain.OrderItem;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
 
-public class OrderItemRepository
+public class OrderItemRepository(ApplicationDbContext context) : IOrderItemRepository, IOrderItemQueries
 {
-    private readonly ApplicationDbContext _context;
-
-    public OrderItemRepository(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
     // Create
     public async Task AddAsync(OrderItem orderItem)
     {
-        await _context.OrderItems.AddAsync(orderItem);
-        await _context.SaveChangesAsync();
+        await context.OrderItems.AddAsync(orderItem);
+        await context.SaveChangesAsync();
     }
 
     // Read
     public async Task<OrderItem?> GetByIdAsync(OrderItemId id)
     {
-        return await _context.OrderItems.FirstOrDefaultAsync(o => o.Id == id);
+        return await context.OrderItems.FirstOrDefaultAsync(o => o.Id == id);
     }
 
     public async Task<IEnumerable<OrderItem>> GetAllAsync()
     {
-        return await _context.OrderItems.ToListAsync();
+        return await context.OrderItems.ToListAsync();
     }
 
     // Update
     public async Task UpdateAsync(OrderItem orderItem)
     {
-        _context.OrderItems.Update(orderItem);
-        await _context.SaveChangesAsync();
+        context.OrderItems.Update(orderItem);
+        await context.SaveChangesAsync();
     }
 
     // Delete
@@ -44,8 +39,8 @@ public class OrderItemRepository
         var orderItem = await GetByIdAsync(id);
         if (orderItem != null)
         {
-            _context.OrderItems.Remove(orderItem);
-            await _context.SaveChangesAsync();
+            context.OrderItems.Remove(orderItem);
+            await context.SaveChangesAsync();
         }
     }
 }

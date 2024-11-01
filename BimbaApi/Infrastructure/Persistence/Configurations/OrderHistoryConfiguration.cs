@@ -15,7 +15,7 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(oh => oh.UserId).IsRequired();
 
             builder
-                .HasMany<Order>() 
+                .HasMany<Orders>() 
                 .WithOne()
                 .HasForeignKey(oh => oh.UserId);
         }

@@ -13,18 +13,17 @@ public class User
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
-
     public string FullName => $"{FirstName} {LastName}";
-    public UserInfo.UserInfo UserInfo { get; private set; }
-    public List<Order.Order> Orders { get; private set; }
+    public UsersInfo UsersInfo { get; private set; }
+    public List<Orders> Orders { get; private set; }
 
-    public User(UserId id, string firstName, string lastName, UserInfo.UserInfo userInfo)
+    public User(UserId id, string firstName, string lastName, UsersInfo usersInfo)
     {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
-        UserInfo = userInfo;
-        Orders = new List<Order.Order>();
+        UsersInfo = usersInfo;
+        Orders = new List<Orders>();
     }
 
     public void UpdateName(string firstName, string lastName)
@@ -33,9 +32,9 @@ public class User
         LastName = lastName;
     }
 
-    public void SetUserInfo(UserInfo.UserInfo userInfo)
+    public void SetUserInfo(UserInfo.UsersInfo usersInfo)
     {
-        UserInfo = userInfo;
+        UsersInfo = usersInfo;
     }
 }
 

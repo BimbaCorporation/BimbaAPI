@@ -3,57 +3,53 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    public class MenuItemRepository
+    public class MenuItemRepository(ApplicationDbContext context) : IMenuItemRepository, IMenuItemQueries
     {
-        private readonly ApplicationDbContext _context;
-
-        public MenuItemRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
 
         // Create - Додавання нового MenuItem
-        public async Task AddAsync(MenuItem menuItem)
+        public async Task AddAsync(MenuItems menuItems)
         {
-            await _context.MenuItems.AddAsync(menuItem);
-            await _context.SaveChangesAsync();
+            await context.MenuItems.AddAsync(menuItems);
+            await context.SaveChangesAsync();
         }
 
         // Read - Отримання MenuItem за ідентифікатором
-        public async Task<MenuItem?> GetByIdAsync(MenuItemId id)
+        public async Task<MenuItems?> GetByIdAsync(MenuItemId id)
         {
-            return await _context.MenuItems.FindAsync(id);
+            return await context.MenuItems.FindAsync(id);
         }
 
         // Read - Отримання всіх MenuItem
-        public async Task<List<MenuItem>> GetAllAsync()
+        public async Task<List<MenuItems>> GetAllAsync()
         {
-            return await _context.MenuItems.ToListAsync();
+            return await context.MenuItems.ToListAsync();
         }
 
         // Update - Оновлення існуючого MenuItem
-        public async Task UpdateAsync(MenuItem menuItem)
+        public async Task UpdateAsync(MenuItems menuItems)
         {
-            var existingItem = await _context.MenuItems.FindAsync(menuItem.Id);
+            var existingItem = await context.MenuItems.FindAsync(menuItems.Id);
             if (existingItem != null)
             {
-                existingItem = menuItem; // Update the properties of existing item as needed
-                _context.MenuItems.Update(existingItem);
-                await _context.SaveChangesAsync();
+                existingItem = menuItems; // Update the properties of existing item as needed
+                context.MenuItems.Update(existingItem);
+                await context.SaveChangesAsync();
             }
         }
 
         // Delete - Видалення MenuItem за ідентифікатором
         public async Task DeleteAsync(MenuItemId id)
         {
-            var menuItem = await _context.MenuItems.FindAsync(id);
+            var menuItem = await context.MenuItems.FindAsync(id);
             if (menuItem != null)
             {
-                _context.MenuItems.Remove(menuItem);
-                await _context.SaveChangesAsync();
+                context.MenuItems.Remove(menuItem);
+                await context.SaveChangesAsync();
             }
         }
     }

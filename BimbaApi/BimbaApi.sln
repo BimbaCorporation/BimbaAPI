@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BimbaApi", "BimbaApi\BimbaApi.csproj", "{279379CE-19B5-4E5B-90ED-C60976E81790}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{279379CE-19B5-4E5B-90ED-C60976E81790}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{ABF9B2EA-1DB3-4084-8133-ED1A381422AC}"
 EndProject

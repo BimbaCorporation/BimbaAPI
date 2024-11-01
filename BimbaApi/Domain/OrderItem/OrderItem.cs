@@ -7,10 +7,10 @@ public class OrderItem
 {
     public OrderItemId Id { get; }
     public MenuItemId MenuItemId { get; }
-    public OrderId OrderId { get; } // Це поле для зв'язку з замовленням
+    public OrderId OrderId { get; } 
 
     public int Quantity { get; private set; }
-    public decimal Price { get; private set; } // Ціна на момент замовлення
+    public decimal Price { get; private set; } 
 
     public OrderItem(OrderItemId id, MenuItemId menuItemId, int quantity, decimal price)
     {

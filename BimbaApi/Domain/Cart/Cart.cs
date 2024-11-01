@@ -1,3 +1,4 @@
+using Domain.CartItem;
 using Domain.MenuItem;
 using Domain.User;
 
@@ -6,20 +7,20 @@ namespace Domain.Cart;
 public class Cart
 {
     public UserId UserId { get; }
-    public List<CartItem.CartItem> Items { get; set; }
+    public List<CartItems> Items { get; set; }
 
     public Cart(UserId userId)
     {
         UserId = userId;
-        Items = new List<CartItem.CartItem>();
+        Items = new List<CartItems>();
     }
 
-    public void AddItem(MenuItem.MenuItem item, int quantity)
+    public void AddItem(MenuItems items, int quantity)
     {
-        var cartItem = Items.FirstOrDefault(i => i.MenuItemId == item.Id);
+        var cartItem = Items.FirstOrDefault(i => i.MenuItemId == items.Id);
         if (cartItem == null)
         {
-            Items.Add(new CartItem.CartItem(item.Id, quantity)); // Не потрібно CartId тут
+            Items.Add(new CartItems(items.Id, quantity)); // Не потрібно CartId тут
         }
         else
         {

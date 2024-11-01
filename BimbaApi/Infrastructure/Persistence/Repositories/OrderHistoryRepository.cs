@@ -1,35 +1,30 @@
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
 using Domain.OrderHistory;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    public class OrderHistoryRepository
+    public class OrderHistoryRepository(ApplicationDbContext context) : IOrderHistoryRepository, IOrderHistoryQueries
     {
-        private readonly ApplicationDbContext _context;
-
-        public OrderHistoryRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         // Create
         public async Task AddOrderHistoryAsync(OrderHistory orderHistory)
         {
-            await _context.OrderHistoryes.AddAsync(orderHistory);
-            await _context.SaveChangesAsync();
+            await context.OrderHistoryes.AddAsync(orderHistory);
+            await context.SaveChangesAsync();
         }
 
         // Read
         public async Task<OrderHistory?> GetOrderHistoryByIdAsync(OrderHistoryId id)
         {
-            return await _context.OrderHistoryes
+            return await context.OrderHistoryes
                 .Include(oh => oh.Orders) // Якщо Orders є навігаційною властивістю
                 .FirstOrDefaultAsync(oh => oh.Id == id);
         }
 
         public async Task<IEnumerable<OrderHistory>> GetAllOrderHistoriesAsync()
         {
-            return await _context.OrderHistoryes
+            return await context.OrderHistoryes
                 .Include(oh => oh.Orders) // Якщо Orders є навігаційною властивістю
                 .ToListAsync();
         }
@@ -37,18 +32,18 @@ namespace Infrastructure.Persistence.Repositories
         // Update
         public async Task UpdateOrderHistoryAsync(OrderHistory orderHistory)
         {
-            _context.OrderHistoryes.Update(orderHistory);
-            await _context.SaveChangesAsync();
+            context.OrderHistoryes.Update(orderHistory);
+            await context.SaveChangesAsync();
         }
 
         // Delete
         public async Task DeleteOrderHistoryAsync(OrderHistoryId id)
         {
-            var orderHistory = await _context.OrderHistoryes.FindAsync(id);
+            var orderHistory = await context.OrderHistoryes.FindAsync(id);
             if (orderHistory != null)
             {
-                _context.OrderHistoryes.Remove(orderHistory);
-                await _context.SaveChangesAsync();
+                context.OrderHistoryes.Remove(orderHistory);
+                await context.SaveChangesAsync();
             }
         }
     }
